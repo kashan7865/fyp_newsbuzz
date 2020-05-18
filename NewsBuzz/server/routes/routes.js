@@ -94,6 +94,13 @@ const {
   Search_Event_ID
 } = require("../controllers/registerEventsAPI/getEventById");
 
+// ------------------------------------------------------
+
+const {
+  readJobs
+} = require("../controllers/img_download_api/img_download");
+
+// ------------------------------------------------------
 // save_event
 
 router.get("/", getData);
@@ -109,6 +116,11 @@ router.get("/api/sports", getsport);
 router.get("/api/world", getWorld);
 router.get("/api/bussiness", getBussiness);
 router.get("/api/jobs", getJobs);
+
+// =======================================img download===========================
+router.get("/api/img/download", readJobs);
+
+// =======================================img download===========================
 
 router.post("/saveEvent", save_event);
 
