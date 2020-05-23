@@ -24,7 +24,8 @@ const jobs = new moongose.Schema({
   },
   description_img_link_data: {
     type: String,
-    unique: true,
+    default: 00,
+
   },
 });
 

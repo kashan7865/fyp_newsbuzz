@@ -36,7 +36,7 @@ exports.img_data_update_to_db = async (req, res) => {
       });
     }
     readFiles(
-      "C:/Users/hussn/OneDrive/Desktop/img conversion/",
+      "F:/node work_space/img download api/After_70-_events-work/NewsBuzz/server/img_text_files/",
       (filepath, name, ext, stat) => {
         console.log("file path:", filepath);
         console.log("file name:", name);
@@ -45,7 +45,7 @@ exports.img_data_update_to_db = async (req, res) => {
           if (err) throw err;
           let jobs = JSON.parse(data);
           var data = jobs.img_description;
-          console.log(data);
+          console.log(jobs._id);
           jobs_n.update(
             { _id: jobs._id },
             { $set: { description_img_link_data: data } }
