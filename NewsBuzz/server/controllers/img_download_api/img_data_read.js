@@ -38,7 +38,7 @@ exports.img_data_update_to_db = async (req, res) => {
     readFiles(
       "F:/node work_space/img download api/After_70-_events-work/NewsBuzz/server/img_text_files/",
       (filepath, name, ext, stat) => {
-        console.log("file path:", filepath);
+        // console.log("file path:", filepath);0
         console.log("file name:", name);
 
         fs.readFile(filepath, (err, data) => {
@@ -46,10 +46,16 @@ exports.img_data_update_to_db = async (req, res) => {
           let jobs = JSON.parse(data);
           var data = jobs.img_description;
           console.log(jobs._id);
-          jobs_n.update(
-            { _id: jobs._id },
-            { $set: { description_img_link_data: data } }
-          );
+
+          var myquery = { _id: jobs._id };
+          var newvalues = { $set: { description_img_link_data: data } };
+          jobs_n.updateOne(myquery, newvalues, function (err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+
+          });
+
+
           // console.log("file extension:", ext);
           // console.log("file information:", stat);
         });
