@@ -9,8 +9,7 @@ exports.readJobs = async (req, res) => {
   try {
     const jobs_R = await jobs_news
       .find()
-      .select("description_img_link")
-      .select("_id");
+
 
     let i = 0;
     console.log(jobs_R);
