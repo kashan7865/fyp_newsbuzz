@@ -65,7 +65,9 @@ const {
 // ------------------------------------------------------
 
 const { readJobs } = require("../controllers/img_download_api/img_download");
-
+const {
+  img_data_update_to_db,
+} = require("../controllers/img_download_api/img_data_read");
 // ------------------------------------------------------
 // save_event
 
@@ -85,7 +87,7 @@ router.get("/api/jobs", getJobs);
 
 // =======================================img download===========================
 router.get("/api/img/download", readJobs);
-
+router.post("/api/img/DBdata/update", img_data_update_to_db);
 // =======================================img download===========================
 
 router.post("/saveEvent", save_event);
