@@ -12,8 +12,17 @@ exports.readJobs = async (req, res) => {
 
 
     let i = 0;
-    console.log(jobs_R);
+
+
     while (jobs_R[i] != null) {
+      // -----------------------------------------------
+
+      console.log("===" + i + "====");
+      console.log("this is id without conversion == " + jobs_R[i]._id);
+      // console.log("this is id with conversion == " + jobs_R._id[i].toHaxString());
+      // -----------------------------------------------
+
+
       img_name = jobs_R[i]._id + ".jpg";
 
       console.log(img_name);
