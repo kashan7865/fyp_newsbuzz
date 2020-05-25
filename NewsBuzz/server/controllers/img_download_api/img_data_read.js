@@ -3,67 +3,98 @@ const fs = require("fs");
 const path = require("path");
 const jobs_n = require("../../models/jobs_model");
 
-exports.img_data_update_to_db = async (req, res) => {
-  try {
-    function readFiles(dir, processFile) {
-      // read directory
-      fs.readdir(dir, (error, fileNames) => {
-        if (error) throw error;
+exports.img_data_update_to_db = (req, res) => {
 
-        fileNames.forEach((filename) => {
-          // get current file name
-          const name = path.parse(filename).name;
-          // get current file extension
-          const ext = path.parse(filename).ext;
 
-          // get current file path
-          const filepath = path.resolve(dir, filename);
+  function readFiles(dir, processFile) {
+    // read directory
+    fs.readdir(dir, (error, fileNames) => {
+      if (error) throw error;
 
-          // get information about the file
-          fs.stat(filepath, function (error, stat) {
-            if (error) throw error;
+      fileNames.forEach((filename) => {
+        // get current file name
+        const name = path.parse(filename).name;
+        // get current file extension
+        const ext = path.parse(filename).ext;
 
-            // check if the current path is a file or a folder
-            const isFile = stat.isFile();
+        // get current file path
+        const filepath = path.resolve(dir, filename);
 
-            // exclude folders
-            if (isFile) {
-              // callback, do something with the file
-              processFile(filepath, name, ext, stat);
-            }
-          });
+        // get information about the file
+        fs.stat(filepath, function (error, stat) {
+          if (error) throw error;
+
+          // check if the current path is a file or a folder
+          const isFile = stat.isFile();
+
+          // exclude folders
+          if (isFile) {
+            // callback, do something with the file
+            processFile(filepath, name, ext, stat);
+          }
         });
       });
-    }
-    readFiles(
-      "F:/node work_space/img download api/After_70-_events-work/NewsBuzz/server/img_text_files/",
-      (filepath, name, ext, stat) => {
-        // console.log("file path:", filepath);0
-        console.log("file name:", name);
-
-        fs.readFile(filepath, (err, data) => {
-          if (err) throw err;
-          let jobs = JSON.parse(data);
-          var data = jobs.img_description;
-          console.log(jobs._id);
-
-          var myquery = { _id: jobs._id };
-          var newvalues = { $set: { description_img_link_data: data } };
-          jobs_n.updateOne(myquery, newvalues, function (err, res) {
-            if (err) throw err;
-            console.log("1 document updated");
-
-          });
-
-
-          // console.log("file extension:", ext);
-          // console.log("file information:", stat);
-        });
-      }
-    );
-    return res.json({ message: " all image data save to database" });
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).send("Server error");
+    });
   }
+
+  readFiles(
+    "F:/node work_space/img download api/After_70-_events-work/NewsBuzz/server/img_text_files/",
+    (filepath, name, ext, stat) => {
+      // console.log("file path:", filepath);0
+      console.log("file name:", name.toString());
+
+      fs.readFile(filepath, async (err, data) => {
+        if (err) throw err;
+        let jobs = JSON.parse(data);
+        var data = jobs.img_description;
+
+        // ================================================
+        console.log("===================================================")
+        console.log(jobs._id);
+        // console.log(jobs.img_description);
+        // ================================================
+
+        // var myquery = { _id: jobs._id };
+        // var newvalues = { $set: { description_img_link_data: data } };
+        // ====================================================================
+        var objForUpdate = { "description_img_link_data": jobs.img_description };
+        const filter = { "_id": jobs._id };
+
+        try {
+          let update = await jobs_n.findOneAndUpdate(
+            filter,
+            objForUpdate,
+            function (error, results) {
+              if (error) {
+                console.log(error)
+
+              }
+              return res.json({
+                status: 1,
+                message: " Updated Successfully",
+                object: results
+              });
+            }
+          );
+        } catch (error) {
+          console.log(error)
+        }
+
+        // ====================================================================
+        // jobs_n.updateOne(myquery, newvalues, function (err, res) {
+        // if (err) throw err;
+        // console.log(jobs_n);
+
+        // });node
+
+
+        // console.log("file extension:", ext);
+        // console.log("file information:", stat);
+      }
+      );
+    }
+  );
+  // return res.json({ message: " all image data save to database" });
+
 };
+
