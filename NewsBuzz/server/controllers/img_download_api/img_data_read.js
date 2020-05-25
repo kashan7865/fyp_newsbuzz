@@ -51,34 +51,27 @@ exports.img_data_update_to_db = (req, res) => {
         // ================================================
         console.log("===================================================")
         console.log(jobs._id);
-        // console.log(jobs.img_description);
+        console.log(jobs.img_description);
         // ================================================
 
         // var myquery = { _id: jobs._id };
         // var newvalues = { $set: { description_img_link_data: data } };
         // ====================================================================
-        var objForUpdate = { "description_img_link_data": jobs.img_description };
-        const filter = { "_id": jobs._id };
-
-        try {
-          let update = await jobs_n.findOneAndUpdate(
-            filter,
-            objForUpdate,
-            function (error, results) {
-              if (error) {
-                console.log(error)
-
-              }
-              return res.json({
-                status: 1,
-                message: " Updated Successfully",
-                object: results
-              });
+        var objForUpdate = {};
+        objForUpdate.description_img_link_data = data;
+        await jobs_n.findOneAndUpdate(
+          {
+            _id: jobs._id
+          },
+          objForUpdate,
+          function (error, results) {
+            if (error) {
+              return (error);
             }
-          );
-        } catch (error) {
-          console.log(error)
-        }
+            console.log(results)
+          }
+        );
+
 
         // ====================================================================
         // jobs_n.updateOne(myquery, newvalues, function (err, res) {
@@ -94,7 +87,7 @@ exports.img_data_update_to_db = (req, res) => {
       );
     }
   );
-  // return res.json({ message: " all image data save to database" });
+  return res.json({ message: " all image data save to database" });
 
 };
 
