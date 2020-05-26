@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const jobs_n = require("../../models/jobs_model");
 
-exports.img_data_update_to_db = (req, res) => {
+exports.img_data_update_to_db = async (req, res) => {
 
 
   function readFiles(dir, processFile) {
@@ -50,39 +50,28 @@ exports.img_data_update_to_db = (req, res) => {
 
         // ================================================
         console.log("===================================================")
-        console.log(jobs._id);
-        console.log(jobs.img_description);
+        console.log("this id readed from a file = " + jobs._id);
+
         // ================================================
 
-        // var myquery = { _id: jobs._id };
-        // var newvalues = { $set: { description_img_link_data: data } };
+        var myquery = { "_id": jobs._id };
+        var newvalues = { $set: { "description_img_link_data": data } };
         // ====================================================================
-        var objForUpdate = {};
-        objForUpdate.description_img_link_data = data;
-        await jobs_n.findOneAndUpdate(
-          {
-            _id: jobs._id
-          },
-          objForUpdate,
-          function (error, results) {
-            if (error) {
-              return (error);
-            }
-            console.log(results)
-          }
-        );
+
+        try {
+          // await jobs_n.findOne({ "_id": jobs._id }, function (err, doc) {
+          //   console.log(doc)
+          // });
+          jobs_n.updateOne(myquery, newvalues, function (err, res) {
+            if (err) throw err;
+            console.log(res)
+
+          });
+        } catch (error) {
+          console.log(error)
+        }
 
 
-        // ====================================================================
-        // jobs_n.updateOne(myquery, newvalues, function (err, res) {
-        // if (err) throw err;
-        // console.log(jobs_n);
-
-        // });node
-
-
-        // console.log("file extension:", ext);
-        // console.log("file information:", stat);
       }
       );
     }
