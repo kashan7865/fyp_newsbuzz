@@ -7,7 +7,7 @@ const Scholarship = ({ navigation }) => {
   return (
     <ScrollView
       vertical
-      showsVerticalScrollIndicator={false}
+      showsVerticalScrollIndicator={true}
       style={{ marginTop: 24 }}
     >
       <Text style={{ paddingHorizontal: 20, fontSize: 24, fontWeight: "700" }}>

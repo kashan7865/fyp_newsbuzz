@@ -17,9 +17,7 @@ export default class Local extends React.Component {
   }
   getData = async () => {
     // const response = await fetch("http://10.113.50.196:9000/api/MSscholarship");
-    const response = await fetch(
-      "http://192.168.1.13:9000/api/BSscholarship"
-    );
+    const response = await fetch("http://192.168.10.3:9000/api/BSscholarship");
     const data = await response.json();
     this.setState({
       data
@@ -31,7 +29,7 @@ export default class Local extends React.Component {
     return (
       <ScrollView
         vertical
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={true}
         style={{ marginTop: 24 }}
       >
         <Text
@@ -73,14 +71,3 @@ export default class Local extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44
-  }
-});

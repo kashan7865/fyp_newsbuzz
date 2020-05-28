@@ -5,7 +5,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import ViewMoreText from "react-native-view-more-text";
 import { AppRegistry, FlatList, StyleSheet } from "react-native";
 
-export default  class Latest extends React.Component {
+class Latest extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -22,7 +22,7 @@ export default  class Latest extends React.Component {
   }
   getData = async () => {
     // const response = await fetch("http://10.113.50.196:9000/api/news");
-    const response = await fetch("http://192.168.0.100:9000/api/news");
+    const response = await fetch("http://192.168.10.3:9000/api/news");
     const data = await response.json();
     this.setState({
       data: data,
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
     height: 44
   }
 });
-
+export default Latest;
