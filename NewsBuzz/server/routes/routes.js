@@ -103,7 +103,7 @@ router.post("/api/search/MSscholarship", Search_MSscholarship_news);
 router.post("/api/search/BSscholarship", Search_BSscholarship_news);
 router.post("/api/search/searchjobs", Search_jobs_news);
 
-router.get("/api/display/registerEvent", Search_registerEvent);
+router.post("/api/display/registerEvent", Search_registerEvent);
 router.get("/api/display/registerEvent/detail", Search_Event_ID);
 
 router.post("/api/Event/updateStatus", updateEventStatus);
