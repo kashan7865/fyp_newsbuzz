@@ -22,9 +22,9 @@ const Category = ({ imageUri, Name, desc }) => {
             resizeMode: "cover"
           }}
         />
-      </View>
+      </View>?
       <View style={{ flex: 1, paddingHorizontal: 10, paddingTop: 10 }}>
-        <Text style={{ fontSize: 20, fontWeight: "650" }}>{Name}</Text>
+        <Text style={{ fontSize: 20, fontWeight: "600" }}>{Name}</Text>
         <Text
           style={{
             fontSize: 13,
