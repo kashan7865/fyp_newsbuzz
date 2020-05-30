@@ -54,8 +54,8 @@ exports.img_data_update_to_db = async (req, res) => {
 
         // ================================================
 
-        var myquery = { "_id": jobs._id };
-        var newvalues = { $set: { "description_img_link_data": data } };
+          var myquery = { "_id": jobs._id };
+          var newvalues = { $set: { "description_img_link_data": data } };
         // ====================================================================
 
         try {

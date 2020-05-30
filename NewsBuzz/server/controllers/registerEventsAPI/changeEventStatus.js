@@ -2,27 +2,29 @@ const event = require("../../models/saveevent");
 
 exports.updateEventStatus = async (req, res) => {
   console.log("----------");
-  console.log(req.body.id);
-  // eventObj.status = "notvarified";
+  console.log(req.body);
+  // eventObj.status = "   ";
   try {
-    var objForUpdate = {};
-    objForUpdate.status = "approved";
-    await event.findOneAndUpdate(
-      {
-        _id: req.body.id
-      },
-      objForUpdate,
-      function (error, results) {
-        if (error) {
-          return next(error);
-        }
-        res.json({
-          status: 1,
-          message: "Admin Updated Successfully",
-          object: results
-        });
-      }
-    );
+    var myquery = { "_id": req.body.id };
+    var newvalues = { $set: { "status": req.body.status_update } };
+
+    // var objForUpdate = {};
+    // objForUpdate.status = req.body.status_update;
+    await event.updateOne(myquery, newvalues, function (err, result) {
+      if (err) throw err;
+      console.log(result)
+
+
+
+    });
+    // console.log(results)
+    // return res.json({
+    //   status: 1,
+    //   message: "event Updated Successfully",
+    //   object: results
+    // });
+    // }
+    // );
   } catch (error) {
     console.log(error);
   }
