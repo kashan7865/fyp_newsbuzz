@@ -22,7 +22,7 @@ class Latest extends React.Component {
   }
   getData = async () => {
     // const response = await fetch("http://10.113.50.196:9000/api/news");
-    const response = await fetch("http://192.168.0.3:9000/api/news");
+    const response = await fetch("http://192.168.0.103:9000/api/news");
     const data = await response.json();
     this.setState({
       data: data,

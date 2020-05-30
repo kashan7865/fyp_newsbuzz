@@ -12,7 +12,7 @@ exports.updateEventStatus = async (req, res) => {
         _id: req.body.id
       },
       objForUpdate,
-      function(error, results) {
+      function (error, results) {
         if (error) {
           return next(error);
         }

@@ -85,7 +85,7 @@ export default class HomePage extends React.Component {
                 //   this.state.Category ==
                 //     "http://CC:9000/api/search/BSadmission" ||
                 //   this.state.Category ==
-                //     "http://192.168.0.3:9000/api/search/MSadmission"
+                //     "http://192.168.0.103:9000/api/search/MSadmission"
                 // ) {
                 // alert(item.discription.trim());
                 // } else {
@@ -295,43 +295,43 @@ export default class HomePage extends React.Component {
                       />
                       <Picker.Item
                         label="LATEST"
-                        value="http:/192.168.0.3:9000/api/search/latest"
+                        value="http:/192.168.0.103:9000/api/search/latest"
                       />
                       <Picker.Item
                         label="Bussiness"
-                        value="http:/192.168.0.3:9000/api/search/bussiness"
+                        value="http:/192.168.0.103:9000/api/search/bussiness"
                       />
                       <Picker.Item
                         label="Sports"
-                        value="http:/192.168.0.3:9000/api/search/sports"
+                        value="http:/192.168.0.103:9000/api/search/sports"
                       />
                       <Picker.Item
                         label="Technology"
-                        value="http:/192.168.0.3:9000/api/search/technology"
+                        value="http:/192.168.0.103:9000/api/search/technology"
                       />
                       <Picker.Item
                         label="World"
-                        value="http:/192.168.0.3:9000/api/search/world"
+                        value="http:/192.168.0.103:9000/api/search/world"
                       />
                       <Picker.Item
                         label="MS Admission"
-                        value="http:/192.168.0.3:9000/api/search/MSadmission"
+                        value="http:/192.168.0.103:9000/api/search/MSadmission"
                       />
                       <Picker.Item
                         label="BS Admission"
-                        value="http:/192.168.0.3:9000/api/search/BSadmission"
+                        value="http:/192.168.0.103:9000/api/search/BSadmission"
                       />
                       <Picker.Item
                         label="MS Scholarships"
-                        value="http:/192.168.0.3:9000/api/search/MSscholarship"
+                        value="http:/192.168.0.103:9000/api/search/MSscholarship"
                       />
                       <Picker.Item
                         label="BS Scholarships"
-                        value="http:/192.168.0.3:9000/api/search/BSscholarship"
+                        value="http:/192.168.0.103:9000/api/search/BSscholarship"
                       />
                       <Picker.Item
                         label="Jobs"
-                        value="http:/192.168.0.3:9000/api/search/searchjobs"
+                        value="http:/192.168.0.103:9000/api/search/searchjobs"
                       />
                     </Picker>
                   ) : null
