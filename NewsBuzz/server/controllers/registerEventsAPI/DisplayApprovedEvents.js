@@ -12,7 +12,7 @@ exports.Search_registerEvent = async (req, res) => {
     console.log(location);
     const eventApproved_ = await registerEvent_model
       .find({
-        // status: "approved",
+        // status: "approved",    need to un comment
         // city: { $regex: new RegExp(".*" + location + ".*", "i") },
       })
       .sort({ _id: -1 });
