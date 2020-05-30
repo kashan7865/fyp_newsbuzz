@@ -116,6 +116,6 @@ router.get("/api/display/react/registerEvent", Reaact_Search_registerEvent);
 Reaact_Search_registerEvent,
 
 
-  router.post("/api/Event/updateStatus", updateEventStatus);
+  router.post("/api/display/registerEvent/updateStatus", updateEventStatus);
 
 module.exports = router;
