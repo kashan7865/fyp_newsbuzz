@@ -11,12 +11,10 @@ import {
 } from "@expo/vector-icons";
 
 import HomePage from "./src/screens/HomePage";
-// import News from "./src/screens/News";
-import News from "./src/screens/components/News/NewsPage";
 import Admission from "./src/screens/Admission";
-import Jobs from "./src/screens/Jobs";
 import Scholarship from "./src/screens/Scholarship";
 import Event from "./src/screens/Event";
+import Jobs from "./src/screens/Jobs";
 
 import MainPage from "./src/screens/components/NewsCategory/MainPage";
 import { createStackNavigator } from "react-navigation-stack";
@@ -131,7 +129,7 @@ const Tabs = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: "red",
       inactiveTintColor: "grey",
-      showLabel: false,
+      showLabel: true,
       style: {
         backgroundColor: "white",
         borderTopWidth: 0,

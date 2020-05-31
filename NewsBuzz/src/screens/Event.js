@@ -2,41 +2,41 @@ import React from "react";
 import { View, Text, StatusBar } from "react-native";
 import Register from "./components/Event/Register";
 import AllEvents from "./components/Event/AllEvents";
+import Userlocation from "./components/Event/Userlocation";
 import { createAppContainer } from "react-navigation";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
-import Notification from "./components/Event/Notification";
 
 const navigator = createMaterialTopTabNavigator(
   {
     Register: {
       screen: Register,
       navigationOptions: {
-        tabBarLabel: "Latest"
-      }
+        tabBarLabel: "Register Event",
+      },
     },
     AllEvents: {
       screen: AllEvents,
       navigationOptions: {
-        tabBarLabel: "All Events"
-      }
+        tabBarLabel: "All Events",
+      },
     },
-    Notification: {
-      screen: Notification,
+    Userlocation: {
+      screen: Userlocation,
       navigationOptions: {
-        tabBarLabel: "Notification"
-      }
-    }
+        tabBarLabel: "User Location",
+      },
+    },
   },
   {
     tabBarOptions: {
       activeTintColor: "white",
       inactiveTintColor: "white",
       tabStyle: {
-        height: 65
+        height: 65,
       },
       labelStyle: {
-        fontSize: 14,
-        fontWeight: "500"
+        fontSize: 16,
+        fontWeight: "500",
       },
       // showLabel: false,
       style: {
@@ -46,9 +46,9 @@ const navigator = createMaterialTopTabNavigator(
         shadowOffset: { width: 5, height: 3 },
         shadowColor: "black",
         shadowOpacity: 0.5,
-        elevation: 10
-      }
-    }
+        elevation: 10,
+      },
+    },
   }
 );
 

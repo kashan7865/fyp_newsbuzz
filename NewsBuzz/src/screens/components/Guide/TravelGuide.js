@@ -9,8 +9,7 @@ import {
   EvilIcons,
   Entypo
 } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
-const TravelGuide = ({ placeUri, placeName, duration, placeDess}) => {
+const TravelGuide = ({ placeUri, placeName, duration, placeDes }) => {
   // const a = JSON.parse(placeUri);
   // console.log(a);
   function renderViewMore(onPress) {
@@ -39,12 +38,6 @@ const TravelGuide = ({ placeUri, placeName, duration, placeDess}) => {
         borderColor: "#dddddd"
       }}
     >
-      {/* {btn ? (
-        <TouchableOpacity onPress={() => meriNavigation.push('HomePage')}><Text>{btn}</Text></TouchableOpacity>
-      ): null} */}
-      
-        {/* <TouchableOpacity onPress={() => navigation.navigate('Graduate')}><Text>CLOSE</Text></TouchableOpacity> */}
-      
       <Image
         // style={{ height: 120, width: 120, justifyContent: "center",alignItems }}
         source={placeUri}

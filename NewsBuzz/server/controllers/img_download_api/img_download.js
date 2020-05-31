@@ -9,12 +9,21 @@ exports.readJobs = async (req, res) => {
   try {
     const jobs_R = await jobs_news
       .find()
-      .select("description_img_link")
-      .sort({ _id: -1 });
+
+
     let i = 0;
 
-    while (jobs_R) {
-      img_name = "jobs" + i + ".jpeg";
+
+    while (jobs_R[i] != null) {
+      // -----------------------------------------------
+
+      console.log("===" + i + "====");
+      console.log("this is id without conversion == " + jobs_R[i]._id);
+      // console.log("this is id with conversion == " + jobs_R._id[i].toHaxString());
+      // -----------------------------------------------
+
+
+      img_name = jobs_R[i]._id + ".jpg";
 
       console.log(img_name);
       img_link = jobs_R[i].description_img_link;
@@ -26,7 +35,12 @@ exports.readJobs = async (req, res) => {
           console.log("content-length:", res.headers["content-length"]);
 
           request(uri)
-            .pipe(fs.createWriteStream(filename))
+            .pipe(
+              fs.createWriteStream(
+                "./img_to_be_OCR//" +
+                filename
+              )
+            )
             .on("close", callback);
         });
       };
@@ -36,11 +50,10 @@ exports.readJobs = async (req, res) => {
       });
       // ===================================
       i = i + 1;
-    }
-    // console.log(jobs_R[0].description_img_link);
+    } return res.json({ message: " all images are downloaded" });
   } catch (err) {
     console.error(err.message);
     return res.status(500).send("Server error");
   }
-  return res.json({ message: " admission news loaded" });
+
 };
